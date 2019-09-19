@@ -18,11 +18,12 @@ void main(){
       int indexcoma = line.indexOf(',');
       print('Line: $linenum and indexcoma: $indexcoma');
       if(indexcoma != -1) {
+        //o fer un split de les comes i despres o ajuntem amb .join
         int sum = int.parse(line.substring(0, indexcoma)) + 10;
         print(sum.toString());
         ret += sum.toString() + line.substring(indexcoma, line.length);
-        if(linenum != linenum - 1)
-            ret += '\n';
+        if(linenum != lines.length - 1)
+          ret += '\n';
       }
       linenum++;
     }
