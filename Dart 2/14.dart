@@ -1,5 +1,5 @@
 void main(){
-  List<dynamic> initList = [0, 'L', null, 'H', 'E', 'L', 'L', 'O', 'o', 9, 9, 2, 1, null, null, 2, 2, 5,5, 3];
+  List<dynamic> initList = [0, 'L', null, 'H', 'E', 'L', 'L', 'O', 'o', 0, 0, 9, 9, 2, 1, null, null, 2, 2, 5,5, 3];
   print(initList);
 
   print(uniq(initList));
