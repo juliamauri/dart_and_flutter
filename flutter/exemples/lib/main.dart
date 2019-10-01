@@ -26,9 +26,28 @@ class App extends StatelessWidget {
               child: Container(color: Colors.red),
               flex: 4,
             ),
-            Container(width: 50, height: 50, color: Colors.green),
+            Container(
+              width: 50,
+              height: 50,
+              color: Colors.green,
+              child: Text(
+                'hola saludos',
+                style: TextStyle(
+                  fontSize: 25,
+                  fontFamily: 'Yanone Kaffeesatz',
+                ),
+              ),
+            ),
             Expanded(
-              child: Container(color: Colors.blue),
+              child: Container(
+                color: Colors.blue,
+                child: Image.asset(
+                  'assets/zawarudo.png',
+                  fit: BoxFit.contain,
+                  alignment: Alignment.topCenter,
+                  repeat: ImageRepeat.repeatY,
+                ),
+              ),
               flex: 3,
             ),
           ],
