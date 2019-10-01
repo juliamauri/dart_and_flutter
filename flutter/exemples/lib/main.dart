@@ -30,6 +30,7 @@ class App extends StatelessWidget {
               width: 50,
               height: 50,
               color: Colors.green,
+              padding: EdgeInsets.all(10),
               child: Text(
                 'hola saludos',
                 style: TextStyle(
@@ -57,28 +58,6 @@ class App extends StatelessWidget {
   }
 }
 
-/*
-        Center(
-          child: Container(
-            width: 200,
-            height: 200,
-            padding: EdgeInsets.all(20),
-            color: Colors.yellow,
-            child: Text(
-              'aha saludos',
-              style: TextStyle(
-                fontSize: 25,
-                fontFamily: 'Yanone Kaffeesatz',
-              ),
-            ),
-            /*
-            child: Image.asset('assets/zawarudo.png',
-            fit: BoxFit.contain,
-            alignment: Alignment.topCenter,
-            repeat: ImageRepeat.repeatY,
-            ),
-            */
-            */
 /*
 class App extends StatelessWidget {
   const App({
