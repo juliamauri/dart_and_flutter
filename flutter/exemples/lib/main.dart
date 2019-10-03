@@ -14,49 +14,121 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Hola'),
+          title: Text('Semaphore'),
+          backgroundColor: Colors.redAccent,
         ),
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          verticalDirection: VerticalDirection.down,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              child: Container(color: Colors.red),
-              flex: 4,
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Container(
+            width: 200,
+            height: 400,
+            color: Colors.black,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Circulo(Colors.red),
+                Circulo(Colors.yellow),
+                Circulo(Colors.green),
+              ],
             ),
-            Container(
-              width: 50,
-              height: 50,
-              color: Colors.green,
-              padding: EdgeInsets.all(10),
-              child: Text(
-                'hola saludos',
-                style: TextStyle(
-                  fontSize: 25,
-                  fontFamily: 'Yanone Kaffeesatz',
-                ),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                color: Colors.blue,
-                child: Image.asset(
-                  'assets/zawarudo.png',
-                  fit: BoxFit.contain,
-                  alignment: Alignment.topCenter,
-                  repeat: ImageRepeat.repeatY,
-                ),
-              ),
-              flex: 3,
-            ),
-          ],
+          ),
         ),
       ),
     );
   }
 }
+
+class Circulo extends StatelessWidget {
+  Circulo(
+    this.color, {
+    Key key,
+  }) : super(key: key);
+
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 110,
+      width: 110,
+      foregroundDecoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+      ),
+    );
+  }
+}
+
+/* Text Aligment 
+
+        body: Center(
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('abcde'),
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: Text(
+                  '12345',
+                  style: TextStyle(fontSize: 30),
+                ),
+              ),
+              RaisedButton(
+                child: Text(button),
+              ),
+            ],
+          ),
+        ),
+        */
+
+/*    Row/Colum TextFont and Images
+
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+            verticalDirection: VerticalDirection.down,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  child: Text('Saludos'),
+                  color: Colors.red,
+                ),
+                flex: 4,
+              ),
+              Container(
+                width: 50,
+                height: 50,
+                color: Colors.green,
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  'hola saludos',
+                  style: TextStyle(
+                    fontSize: 10,
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  color: Colors.blue,
+                  child: Image.asset(
+                    'assets/zawarudo.png',
+                    fit: BoxFit.contain,
+                    alignment: Alignment.topCenter,
+                    repeat: ImageRepeat.repeatY,
+                  ),
+                ),
+                flex: 3,
+              ),
+            ],
+          ),
+          */
 
 /*
 class App extends StatelessWidget {
