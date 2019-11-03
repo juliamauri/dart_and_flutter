@@ -18,10 +18,6 @@ class App extends StatelessWidget {
           backgroundColor: Colors.redAccent,
         ),
         body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          verticalDirection: VerticalDirection.down,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Banda(2, Colors.pinkAccent, '20%'),
             Banda(3, Colors.purple[300], '30%'),

@@ -14,21 +14,21 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Semaphore'),
-          backgroundColor: Colors.redAccent,
+          title: Text('Tags'),
+          backgroundColor: Colors.red,
         ),
         backgroundColor: Colors.white,
         body: Center(
           child: Container(
-            width: 200,
-            height: 400,
-            color: Colors.black,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            height: 60,
+            color: Colors.orange,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Circulo(Colors.red),
-                Circulo(Colors.yellow),
-                Circulo(Colors.green),
+                Tag("rock"),
+                Tag("jazz"),
+                Tag("classical"),
+                Tag("hip-hop")
               ],
             ),
           ),
@@ -38,22 +38,29 @@ class App extends StatelessWidget {
   }
 }
 
-class Circulo extends StatelessWidget {
-  Circulo(
-    this.color, {
+class Tag extends StatelessWidget {
+  const Tag(
+    this.tagName, {
     Key key,
   }) : super(key: key);
 
-  final Color color;
-
+  final String tagName;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 110,
-      width: 110,
-      foregroundDecoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
+      margin: EdgeInsets.only(left: 5),
+      padding: EdgeInsets.fromLTRB(15, 7, 15, 7),
+      decoration: BoxDecoration(
+        color: Colors.grey[700],
+        shape: BoxShape.rectangle,
+        borderRadius: BorderRadius.all(Radius.circular(25)),
+      ),
+      child: Text(
+        tagName,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
       ),
     );
   }
