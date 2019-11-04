@@ -1,70 +1,42 @@
 import 'package:flutter/material.dart';
-
+import 'RecipeApp/Recipe.dart';
+import 'RecipeApp/RecipeScreen.dart';
+import 'RecipeApp/AddIngredientScreen.dart';
 void main() {
   runApp(App());
 }
 
+Recipe GetTortillaDePatata() {
+  Recipe ret = Recipe();
+  ret.name = 'Tortilla de Patata';
+  ret.minutes = 45;
+  ret.description =
+      'Corta las patatas (y opcionalmente, cebolla), fríelas suavemente durante 25-30 minutos. Bate los huevos. Añade sal a tu gusto. Mezcla las patatas y los huevos batidos y deja reposar almenos 2 horas. Frie la mezcla dejando que cuaje y dando la vuelta con un plato o una tapa.';
+  ret.addIngredient = 'Patatas';
+  ret.addIngredient = 'Huevos';
+  return ret;
+}
+
 class App extends StatelessWidget {
-  const App({
+  App({
     Key key,
   }) : super(key: key);
+
+  final Recipe tortilladepatata = GetTortillaDePatata();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Tags'),
-          backgroundColor: Colors.red,
-        ),
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Container(
-            height: 60,
-            color: Colors.orange,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Tag("rock"),
-                Tag("jazz"),
-                Tag("classical"),
-                Tag("hip-hop")
-              ],
-            ),
-          ),
-        ),
-      ),
+      theme: ThemeData(primarySwatch: Colors.teal),
+      initialRoute: '/',
+      routes: {
+        '/' : (context) => RecipeScreen(recipe: tortilladepatata),
+        '/add' : (context) => AddIngredientScreen(),
+      },
     );
   }
 }
 
-class Tag extends StatelessWidget {
-  const Tag(
-    this.tagName, {
-    Key key,
-  }) : super(key: key);
-
-  final String tagName;
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 5),
-      padding: EdgeInsets.fromLTRB(15, 7, 15, 7),
-      decoration: BoxDecoration(
-        color: Colors.grey[700],
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.all(Radius.circular(25)),
-      ),
-      child: Text(
-        tagName,
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
-        ),
-      ),
-    );
-  }
-}
 
 /* Text Aligment 
 
