@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'Recipe.dart';
 
+Recipe getTortillaDePatata() {
+  Recipe ret = Recipe();
+  ret.name = 'Tortilla de Patata';
+  ret.minutes = 45;
+  ret.description =
+      'Corta las patatas (y opcionalmente, cebolla), fríelas suavemente durante 25-30 minutos. Bate los huevos. Añade sal a tu gusto. Mezcla las patatas y los huevos batidos y deja reposar almenos 2 horas. Frie la mezcla dejando que cuaje y dando la vuelta con un plato o una tapa.';
+  ret.addIngredient = 'Patatas';
+  ret.addIngredient = 'Huevos';
+  return ret;
+}
+
 class RecipeScreen extends StatelessWidget {
-  const RecipeScreen({
+   RecipeScreen({
     Key key,
-    @required this.recipe,
   }) : super(key: key);
 
-  final Recipe recipe;
+  final Recipe recipe = getTortillaDePatata();
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +25,7 @@ class RecipeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Recipe'),
       ),
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.only(left: 10,top: 20,right: 10),
@@ -37,17 +48,26 @@ class RecipeScreen extends StatelessWidget {
 }
 
 class Ingredients extends StatefulWidget {
-  Ingredients(this._ingredients) {
-    _lines = _ingredients.join('\n');
-  }
+  Ingredients(this._ingredients);
   final List<String> _ingredients;
-  String _lines = '';
 
   @override
   State<StatefulWidget> createState() => _Ingredients();
 }
 
 class _Ingredients extends State<Ingredients> {
+
+  List<String> _ingredients;
+  String _lines;
+
+  @override
+  void initState() {
+    _ingredients = List<String>();
+    _ingredients.addAll(widget._ingredients);
+    _lines = _ingredients.join('\n');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -56,7 +76,7 @@ class _Ingredients extends State<Ingredients> {
         children: <Widget>[
           Container(
             child: Text(
-              widget._lines,
+              _lines,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey,
@@ -76,11 +96,11 @@ class _Ingredients extends State<Ingredients> {
                 ),
                 color: Colors.grey[350],
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/add').then((newIngredient) {
+                  Navigator.of(context).pushNamed('/R/A').then((newIngredient) {
                     if (newIngredient != null) {
                       setState(() {
-                        widget._ingredients.add(newIngredient);
-                        widget._lines = widget._ingredients.join('\n');
+                        _ingredients.add(newIngredient);
+                        _lines = _ingredients.join('\n');
                       });
                     }
                   });

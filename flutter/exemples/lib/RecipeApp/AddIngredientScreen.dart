@@ -49,7 +49,6 @@ class _AddIngredientScreenState extends State<AddIngredientScreen> {
               ),
               color: Colors.pink,
               onPressed: (){
-                FocusScope.of(context).unfocus(); //Close the keyboard because cause rendering error returning at main screen
                 Navigator.of(context).pop((_controller.text.isEmpty ? null : _controller.text));
               },
             ),

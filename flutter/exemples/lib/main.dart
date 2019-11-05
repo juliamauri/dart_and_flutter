@@ -1,17 +1,129 @@
 import 'package:flutter/material.dart';
-import "ConsultesApp/ConsulteScreen.dart";
+import 'Exercicis_Widgets_Basics/Column-Bands.dart';
+import 'Exercicis_Widgets_Basics/Column-Semaphore.dart';
+import 'Exercicis_Widgets_Basics/Row-Numbers.dart';
+import 'Exercicis_Widgets_Basics/Row-Tags.dart';
+import 'RecipeApp/RecipeScreen.dart';
+import 'RecipeApp/AddIngredientScreen.dart';
+import 'SongListApp/SongListScreen.dart';
+import 'SongListApp/SongEditScreen.dart';
+import 'ColorMatchApp/ColorMatchScreen.dart';
+import 'ColorMatchApp/ChooseColorScreen.dart';
+import 'CounterListApp/CounterListScreen.dart';
+import 'ConsultesApp/ConsulteScreen.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ScrollController _sController;
+
+  List<String> _screens;
+  List<IconData> _icons;
+  List<String> _routes;
+  @override
+  void initState() {
+    _sController = ScrollController();
+    _screens = [
+      'Column bands',
+      'Column Semaphore',
+      'Row Numbers',
+      'Row Tags',
+      'Recipe App',
+      'Song List App',
+      'Color Match App',
+      'Counter List App',
+      'Consultes App',
+    ];
+    _icons = [
+      Icons.view_column,
+      Icons.more_vert,
+      Icons.more_horiz,
+      Icons.title,
+      Icons.view_agenda,
+      Icons.sort,
+      Icons.color_lens,
+      Icons.computer,
+      Icons.calendar_today,
+    ];
+    _routes = [
+      '/L/CB',
+      '/L/CS',
+      '/L/RN',
+      '/L/RT',
+      '/R',
+      '/S',
+      '/CM',
+      '/CL',
+      '/C',
+    ];
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ConsultesScreen(),
+      routes: {
+        '/L/CB': (context) => ColumnBandsScreen(),
+        '/L/CS': (context) => ColumnSemaphoreScreen(),
+        '/L/RN': (context) => RowNumbersScreen(),
+        '/L/RT': (context) => RowTagsScreen(),
+        '/R' : (context) => RecipeScreen(),
+        '/R/A' : (context) => AddIngredientScreen(),
+        '/S' : (context) => SongListScreen(),
+        '/S/E' : (context) => SongEditScreen(),
+        '/CM' : (context) => ColorMatchScreen(),
+        '/CM/C' : (context) => ChooseColorScreen(),
+        '/CL' : (context) => CounterListScreen(),
+        '/C' : (context) => ConsultesScreen(),
+      },
+      home: Scaffold(
+          appBar: AppBar(
+            title: Text('All APPS'),
+          ),
+          body: ListView.separated(
+            controller: _sController,
+            scrollDirection: Axis.vertical,
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+            itemCount: _screens.length,
+            itemBuilder: (context, index) {
+              return AppRoute(_screens[index], _icons[index], _routes[index]);
+            },
+          )),
+    );
+  }
+}
+
+class AppRoute extends StatelessWidget {
+  const AppRoute(
+    this.title,
+    this.iconImg,
+    this.route, {
+    Key key,
+  }) : super(key: key);
+
+  final String title;
+  final IconData iconImg;
+  final String route;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(iconImg),
+      title: Text(title),
+      onTap: () {
+        Navigator.of(context).pushNamed(route);
+      },
     );
   }
 }

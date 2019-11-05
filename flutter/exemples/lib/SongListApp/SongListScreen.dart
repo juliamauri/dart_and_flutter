@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'Song.dart';
 
 class SongListScreen extends StatefulWidget {
-  final List<Song> _songs;
-  SongListScreen(this._songs);
   @override
   _SongListScreenState createState() => _SongListScreenState();
 }
 
 class _SongListScreenState extends State<SongListScreen> {
+  List<Song> _songs;
+
+  @override
+  void initState() {
+    _songs = GetSongs();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +25,10 @@ class _SongListScreenState extends State<SongListScreen> {
             icon: const Icon(Icons.more_vert),
             tooltip: 'Add Song',
             onPressed: () {
-              Navigator.of(context).pushNamed("/edit").then((newSong) {
+              Navigator.of(context).pushNamed("/S/E").then((newSong) {
                 if (newSong != null) {
                   setState(() {
-                    widget._songs.add(newSong);
+                    _songs.add(newSong);
                   });
                 }
               });
@@ -34,8 +40,8 @@ class _SongListScreenState extends State<SongListScreen> {
         padding: const EdgeInsets.only(top: 20),
         child: Column(
           children: <Widget>[
-            for (int i = 0; i < widget._songs.length; i++)
-              SongWidget(widget._songs[i], i, this)
+            for (int i = 0; i < _songs.length; i++)
+              SongWidget(_songs[i], i, this)
           ],
         ),
       ),
@@ -90,12 +96,12 @@ class SongWidget extends StatelessWidget {
             ),
           ),
           onTap: () {
-            Navigator.of(context).pushNamed('/edit', arguments: s).then(
+            Navigator.of(context).pushNamed('/S/E', arguments: s).then(
               (newSong) {
                 if (newSong != null) {
                   parent.setState(
                     () {
-                      parent.widget._songs[index] = newSong;
+                      parent._songs[index] = newSong;
                     },
                   );
                 }

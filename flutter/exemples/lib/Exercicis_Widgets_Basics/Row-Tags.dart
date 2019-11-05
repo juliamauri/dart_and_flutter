@@ -1,36 +1,30 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(App());
-}
-
-class App extends StatelessWidget {
-  const App({
+class RowTagsScreen extends StatelessWidget {
+  const RowTagsScreen({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Tags'),
-          backgroundColor: Colors.red,
-        ),
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Container(
-            height: 60,
-            color: Colors.orange,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Tag("rock"),
-                Tag("jazz"),
-                Tag("classical"),
-                Tag("hip-hop")
-              ],
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Tags'),
+        backgroundColor: Colors.red,
+      ),
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Container(
+          height: 60,
+          color: Colors.orange,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Tag("rock"),
+              Tag("jazz"),
+              Tag("classical"),
+              Tag("hip-hop")
+            ],
           ),
         ),
       ),

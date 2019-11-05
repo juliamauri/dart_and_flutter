@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'CounterString.dart';
 
-void main() {
-  runApp(App());
-}
-
-List<Counter> GetCounters() {
+List<Counter> getCounters() {
   List<Counter> ret = List<Counter>();
   ret.add(Counter('lo peta'));
   ret.add(Counter('chachi'));
@@ -17,34 +13,24 @@ List<Counter> GetCounters() {
   return ret;
 }
 
-class App extends StatelessWidget {
-  App({
-    Key key,
-  }) : super(key: key);
-
-  final List<Counter> _counters = GetCounters();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: CounterListScreen(_counters));
-  }
-}
-
 class CounterListScreen extends StatefulWidget {
-  const CounterListScreen(
-    this._counters, {
+  const CounterListScreen( {
     Key key,
   }) : super(key: key);
-
-  final List<Counter> _counters;
 
   @override
   _CounterListScreenState createState() => _CounterListScreenState();
 }
 
 class _CounterListScreenState extends State<CounterListScreen> {
+  List<Counter> _counters;
+
+  @override
+  void initState() {
+    _counters = getCounters();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +50,7 @@ class _CounterListScreenState extends State<CounterListScreen> {
                             child: Text('Reset'),
                             onPressed: () {
                               setState(() {
-                                for (Counter c in widget._counters) c.times = 0;
+                                for (Counter c in _counters) c.times = 0;
                               });
                               Navigator.of(context).pop();
                             },
@@ -94,7 +80,7 @@ class _CounterListScreenState extends State<CounterListScreen> {
                 .then((newCounter) {
               if (newCounter != null) {
                 setState(() {
-                  widget._counters.add(newCounter);
+                  _counters.add(newCounter);
                 });
               }
             });
@@ -104,7 +90,7 @@ class _CounterListScreenState extends State<CounterListScreen> {
           crossAxisCount: 3,
           padding: EdgeInsets.all(5),
           children: <Widget>[
-            for (int i = 0; i < widget._counters.length; i++)
+            for (int i = 0; i < _counters.length; i++)
               Container(
                 margin: EdgeInsets.all(3),
                 decoration: BoxDecoration(
@@ -114,12 +100,12 @@ class _CounterListScreenState extends State<CounterListScreen> {
                   child: InkWell(
                     onTap: () {
                       setState(() {
-                        widget._counters[i].times += 1;
+                        _counters[i].times += 1;
                       });
                     },
                     onLongPress: () {
                       setState(() {
-                        widget._counters[i].times -= 1;
+                        _counters[i].times -= 1;
                       });
                     },
                     child: Column(
@@ -127,7 +113,7 @@ class _CounterListScreenState extends State<CounterListScreen> {
                         Expanded(
                           child: Center(
                             child: Text(
-                              widget._counters[i].times.toString(),
+                              _counters[i].times.toString(),
                             ),
                           ),
                         ),
@@ -140,7 +126,7 @@ class _CounterListScreenState extends State<CounterListScreen> {
                             border: Border.all(color: Colors.grey[300]),
                             color: Colors.blue[200].withOpacity(0.4),
                           ),
-                          child: Center(child: Text(widget._counters[i].name)),
+                          child: Center(child: Text(_counters[i].name)),
                         )
                       ],
                     ),

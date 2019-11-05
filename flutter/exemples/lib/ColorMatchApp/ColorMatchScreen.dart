@@ -120,7 +120,7 @@ class ColorInput extends StatelessWidget {
             child: RaisedButton(
               child: Text(title),
               onPressed: () {
-                Navigator.of(context).pushNamed('/choose').then((newColor) {
+                Navigator.of(context).pushNamed('/CM/C').then((newColor) {
                   if (newColor != null) {
                     parent.setState(() {
                       if (bg) {

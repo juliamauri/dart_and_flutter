@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(App());
-}
-
-class App extends StatelessWidget {
-  const App({
+class RowNumbersScreen extends StatelessWidget {
+  const RowNumbersScreen({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Numbers'),
-          backgroundColor: Colors.red,
-        ),
-        backgroundColor: Colors.yellow,
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              for(num i = 1; i<7;i++) CircleNumber(i)
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Numbers'),
+        backgroundColor: Colors.red,
+      ),
+      backgroundColor: Colors.yellow,
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            for(num i = 1; i<7;i++) CircleNumber(i)
+          ],
         ),
       ),
     );

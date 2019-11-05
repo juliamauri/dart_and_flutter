@@ -1,29 +1,23 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(App());
-}
-
-class App extends StatelessWidget {
-  const App({
+class ColumnBandsScreen extends StatelessWidget {
+  const ColumnBandsScreen({
     Key key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Semaphore'),
-          backgroundColor: Colors.redAccent,
-        ),
-        body: Column(
-          children: <Widget>[
-            Banda(2, Colors.pinkAccent, '20%'),
-            Banda(3, Colors.purple[300], '30%'),
-            Banda(5, Colors.blue, '50%'),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Semaphore'),
+        backgroundColor: Colors.redAccent,
+      ),
+      body: Column(
+        children: <Widget>[
+          Banda(2, Colors.pinkAccent, '20%'),
+          Banda(3, Colors.purple[300], '30%'),
+          Banda(5, Colors.blue, '50%'),
+        ],
       ),
     );
   }
