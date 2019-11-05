@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
-import 'SongListApp/Song.dart';
-import 'SongListApp/SongEditScreen.dart';
-import 'SongListApp/SongListScreen.dart';
+import 'ColorMatchApp/ChooseColorScreen.dart';
+import 'ColorMatchApp/ColorMatchScreen.dart';
 void main() {
   runApp(App());
 }
 
-List<Song> GetSongs() {
-  List<Song> ret = List<Song>();
-  ret.add(Song('...And Justice For All','Metallica',1988));
-  ret.add(Song('Night Train','Oscar Peterson Trio',1963));
-  ret.add(Song('Mentiras','Toteking',2006));
-  return ret;
-}
-
 class App extends StatelessWidget {
-  App({
+  const App({
     Key key,
   }) : super(key: key);
 
-  final List<Song> songs = GetSongs();
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +17,8 @@ class App extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.teal),
       initialRoute: '/',
       routes: {
-        '/' : (context) => SongListScreen(songs),
-        '/edit' : (context) => SongEditScreen(),
+        '/' : (context) => ColorMatchScreen(),
+        '/choose' : (context) => ChooseColorScreen(),
       },
     );
   }
