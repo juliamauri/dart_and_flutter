@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'RecipeApp/Recipe.dart';
-import 'RecipeApp/RecipeScreen.dart';
-import 'RecipeApp/AddIngredientScreen.dart';
+import 'SongListApp/Song.dart';
+import 'SongListApp/SongEditScreen.dart';
+import 'SongListApp/SongListScreen.dart';
 void main() {
   runApp(App());
 }
 
-Recipe GetTortillaDePatata() {
-  Recipe ret = Recipe();
-  ret.name = 'Tortilla de Patata';
-  ret.minutes = 45;
-  ret.description =
-      'Corta las patatas (y opcionalmente, cebolla), fríelas suavemente durante 25-30 minutos. Bate los huevos. Añade sal a tu gusto. Mezcla las patatas y los huevos batidos y deja reposar almenos 2 horas. Frie la mezcla dejando que cuaje y dando la vuelta con un plato o una tapa.';
-  ret.addIngredient = 'Patatas';
-  ret.addIngredient = 'Huevos';
+List<Song> GetSongs() {
+  List<Song> ret = List<Song>();
+  ret.add(Song('...And Justice For All','Metallica',1988));
+  ret.add(Song('Night Train','Oscar Peterson Trio',1963));
+  ret.add(Song('Mentiras','Toteking',2006));
   return ret;
 }
 
@@ -22,7 +19,7 @@ class App extends StatelessWidget {
     Key key,
   }) : super(key: key);
 
-  final Recipe tortilladepatata = GetTortillaDePatata();
+  final List<Song> songs = GetSongs();
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +27,8 @@ class App extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.teal),
       initialRoute: '/',
       routes: {
-        '/' : (context) => RecipeScreen(recipe: tortilladepatata),
-        '/add' : (context) => AddIngredientScreen(),
+        '/' : (context) => SongListScreen(songs),
+        '/edit' : (context) => SongEditScreen(),
       },
     );
   }
