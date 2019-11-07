@@ -66,8 +66,6 @@ class _SongEditScreenState extends State<SongEditScreen> {
                     ),
                   ),
                   onPressed: () {
-                    FocusScope.of(context)
-                        .unfocus(); //Close the keyboard because cause rendering error returning at main screen
                     Navigator.of(context).pop(Song(_controllers[0].text,
                         _controllers[1].text, int.parse(_controllers[2].text)));
                   },

@@ -11,6 +11,7 @@ import 'ColorMatchApp/ColorMatchScreen.dart';
 import 'ColorMatchApp/ChooseColorScreen.dart';
 import 'CounterListApp/CounterListScreen.dart';
 import 'ConsultesApp/ConsulteScreen.dart';
+import 'TodoListApp/TodoListScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +40,7 @@ class _MyAppState extends State<MyApp> {
       'Color Match App',
       'Counter List App',
       'Consultes App',
+      'Todo List App'
     ];
     _icons = [
       Icons.view_column,
@@ -50,6 +52,7 @@ class _MyAppState extends State<MyApp> {
       Icons.color_lens,
       Icons.computer,
       Icons.calendar_today,
+      Icons.check_box
     ];
     _routes = [
       '/L/CB',
@@ -61,6 +64,7 @@ class _MyAppState extends State<MyApp> {
       '/CM',
       '/CL',
       '/C',
+      '/TD'
     ];
 
     super.initState();
@@ -85,6 +89,7 @@ class _MyAppState extends State<MyApp> {
         '/CM/C' : (context) => ChooseColorScreen(),
         '/CL' : (context) => CounterListScreen(),
         '/C' : (context) => ConsultesScreen(),
+        '/TD' : (context) => TodoListScreen(),
       },
       home: Scaffold(
           appBar: AppBar(
