@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Game Engine Architecture",
+        "author": "by Jason Gregory",
+        "description": "This book covers both the theory and practice of game engine software development, bringing together complete coverage of a wide range of topics. The concepts and techniques described are the actual ones used by real game studios like Electronic Arts and Naughty Dog. The examples are often grounded in specific technologies, but the discussion extends way beyond any particu ...more.",
+        "imageAssets": "assets/GameEngineArchitecture.jpg",
+        "impression": false,
+        "robart": true,
+        "storybook": false,
+        "stars": 4,
+        "favourite": false
+    },
+
+    {
+        "name": "Game Programming Patterns",
+        "author": "by  Robert Nystrom",
+        "description": "The biggest challenge facing many game programmers is completing their game. Most game projects fizzle out, overwhelmed by the complexity of their own code. Game Programming Patterns tackles that exact problem. Based on years of experience in shipped AAA titles, this book collects proven patterns to untangle and optimize your game, organized as independent recipes so you can pick just the patterns you need.\n You will learn how to write a robust game loop, how to organize your entities using components, and take advantage of the CPUs cache to improve your performance. You'll dive deep into how scripting engines encode behavior, how quadtrees and other spatial partitions optimize your engine, and how other classic design patterns can be used in games.",
+        "imageAssets": "assets/GameProgrammingPatterns.jpg",
+        "impression": true,
+        "robart": true,
+        "storybook": false,
+        "stars": 5,
+        "favourite": false
+    },
+
+    {
+        "name": "Mathematics for 3D Game Programming and Computer Graphics",
+        "author": "by  Eric Lengyel",
+        "description": "Sooner or later, all game programmers run into coding issues that require an understanding of mathematics or physics concepts such as collision detection, 3D vectors, transformations, game theory, or basic calculus. Unfortunately, most programmers frequently have a limited understanding of these essential mathematics and physics concepts. MATHEMATICS AND PHYSICS FOR PROGRAMMERS, THIRD EDITION provides a simple but thorough grounding in the mathematics and physics topics that programmers require to write algorithms and programs using a non-language-specific approach. Applications and examples from game programming are included throughout, and exercises follow each chapter for additional practice. The book's companion website provides sample code illustrating the mathematical and physics topics discussed in the book.",
+        "imageAssets": "assets/Mathematicsfor3DGameProgramming.jpg",
+        "impression": false,
+        "robart": false,
+        "storybook": false,
+        "stars": 3,
+        "favourite": false
+    }
+]
